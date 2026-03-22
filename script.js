@@ -1,30 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // ---- Minimal Desktop Parallax / Ambient Glow ----
-    // Only apply on non-touch devices for performance and UX
-    if (window.matchMedia("(pointer: fine)").matches) {
-        const bgContainer = document.querySelector('.background-overlay');
-        const glowTarget = document.querySelector('.glow-effect');
+// ─── Nav: add 'scrolled' class on scroll ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            
-            const xRatio = x / window.innerWidth;
-            const yRatio = y / window.innerHeight;
-            
-            // Move subtle background gradient inversely
-            const bgX = (xRatio - 0.5) * -15;
-            const bgY = (yRatio - 0.5) * -15;
-            
-            requestAnimationFrame(() => {
-                bgContainer.style.transform = `translate(${bgX}px, ${bgY}px) scale(1.05)`;
-                
-                // Track mouse directly with the glow effect
-                if(glowTarget) {
-                    glowTarget.style.left = `${x}px`;
-                    glowTarget.style.top = `${y}px`;
-                }
-            });
-        });
-    }
+// ─── Mobile nav toggle ───
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
 });
+
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ─── Mouse glow effect (desktop only) ───
+const glowEffect = document.querySelector('.glow-effect');
+
+if (window.matchMedia('(pointer: fine)').matches) {
+    let rafId = null;
+
+    document.addEventListener('mousemove', (e) => {
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => {
+            glowEffect.style.left = e.clientX + 'px';
+            glowEffect.style.top = e.clientY + 'px';
+            rafId = null;
+        });
+    });
+}
+
+// ─── Newsletter form submit ───
+const form = document.getElementById('notifyForm');
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.submit-btn');
+        btn.innerHTML = 'Thank you <i class="fa-solid fa-check"></i>';
+        btn.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+        btn.style.color = 'white';
+        form.querySelector('.email-input').disabled = true;
+    });
+}
