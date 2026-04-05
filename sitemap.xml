@@ -17,24 +17,5 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Shop Page (add when ready) -->
-  <!-- 
-  <url>
-    <loc>https://lekova.net/shop.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  -->
-
-  <!-- Contact Page (add when ready) -->
-  <!--
-  <url>
-    <loc>https://lekova.net/contact.html</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  -->
-
+ 
 </urlset>
