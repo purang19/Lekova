@@ -16,10 +16,10 @@ navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// ─── Mouse glow effect (desktop only) ───
+// ─── Mouse glow effect (desktop only; only on pages that have the element) ───
 const glowEffect = document.querySelector('.glow-effect');
 
-if (window.matchMedia('(pointer: fine)').matches) {
+if (glowEffect && window.matchMedia('(pointer: fine)').matches) {
     let rafId = null;
 
     document.addEventListener('mousemove', (e) => {
