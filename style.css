@@ -305,15 +305,6 @@ body {
     transform: scale(1.04);
 }
 
-/* "Enquire" line in place of a price */
-.product-enquire {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--silver-dark);
-    font-weight: 300;
-}
-
 /* About section photo */
 .about-photo {
     width: 100%;
@@ -370,6 +361,7 @@ body {
     letter-spacing: 0.04em;
     color: var(--text-primary);
     margin-bottom: 0.3rem;
+    text-align: center;
 }
 
 .product-price {
