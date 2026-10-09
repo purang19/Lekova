@@ -44,3 +44,51 @@ if (form) {
         form.querySelector('.email-input').disabled = true;
     });
 }
+
+// ─── Cookie consent (Google Consent Mode v2) ───
+(function () {
+    const KEY = 'lekova_cookie_consent';
+    let choice = null;
+    try { choice = localStorage.getItem(KEY); } catch (e) {}
+
+    // If the visitor already accepted, grant analytics for this page load.
+    if (choice === 'granted' && typeof gtag === 'function') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
+
+    // A choice already exists → never show the banner again.
+    if (choice === 'granted' || choice === 'denied') return;
+
+    // Build the banner.
+    const banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML =
+        '<p class="cookie-text">We use cookies to understand how our site is used and improve your experience. ' +
+        'See our <a href="/privacy/">Privacy Policy</a>.</p>' +
+        '<div class="cookie-actions">' +
+        '<button class="cookie-btn decline" type="button">Decline</button>' +
+        '<button class="cookie-btn accept" type="button">Accept</button>' +
+        '</div>';
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => banner.classList.add('show'));
+
+    function close() {
+        banner.classList.remove('show');
+        setTimeout(() => banner.remove(), 450);
+    }
+
+    banner.querySelector('.accept').addEventListener('click', () => {
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+        close();
+    });
+
+    banner.querySelector('.decline').addEventListener('click', () => {
+        try { localStorage.setItem(KEY, 'denied'); } catch (e) {}
+        close();
+    });
+})();

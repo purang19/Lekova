@@ -6,6 +6,16 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      // Consent Mode v2 — default everything to denied until the visitor chooses.
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+
       gtag('js', new Date());
       gtag('config', 'G-JYLKJXTPT1');
     </script>
@@ -75,8 +85,10 @@
             <h2>Cookies &amp; Analytics</h2>
             <p>
                 We use <strong>Google Analytics</strong> to understand site traffic. It sets cookies
-                that collect anonymised usage data. You can disable cookies in your browser settings,
-                or opt out of Google Analytics using Google's
+                that collect anonymised usage data. When you first visit, we ask for your consent —
+                analytics cookies are <strong>not set unless you choose "Accept"</strong>. You can
+                decline at any time, clear your browser data to be asked again, or opt out of Google
+                Analytics using Google's
                 <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">opt-out add-on</a>.
             </p>
 
