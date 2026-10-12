@@ -1054,3 +1054,35 @@ body.subpage .nav {
     .product-page-details .page-title { text-align: center; }
     .product-cta { justify-content: center; }
 }
+
+/* ─── Size guide cm/inch toggle ─── */
+.unit-toggle {
+    display: inline-flex;
+    border: 1px solid var(--glass-border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.8rem;
+}
+.unit-toggle button {
+    background: transparent;
+    color: var(--silver-dark);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.unit-toggle button.active {
+    background: linear-gradient(135deg, #e6e6e6 0%, #a6a6a6 100%);
+    color: var(--bg-darker);
+    font-weight: 600;
+}
+.table-hint {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--silver-dark);
+    margin-bottom: 0.6rem !important;
+}

@@ -60,50 +60,56 @@
 
         <div class="page-body">
             <p class="lead">
-                Our pieces are cut for a considered, relaxed fit. Use the measurements below as a
-                guide, and message us if you're between sizes — we'll advise personally.
+                Our tees are cut for a relaxed, everyday fit. Use the measurements below as a guide —
+                and if you're between sizes, message us and we'll advise personally.
             </p>
 
-            <h2>Tops &amp; Jackets (cm)</h2>
-            <table class="size-table">
-                <thead>
-                    <tr><th>Size</th><th>Chest</th><th>Shoulder</th><th>Length</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>XS</td><td>96</td><td>42</td><td>66</td></tr>
-                    <tr><td>S</td><td>102</td><td>44</td><td>68</td></tr>
-                    <tr><td>M</td><td>108</td><td>46</td><td>70</td></tr>
-                    <tr><td>L</td><td>114</td><td>48</td><td>72</td></tr>
-                    <tr><td>XL</td><td>120</td><td>50</td><td>74</td></tr>
-                </tbody>
-            </table>
-            <p><span class="fill">[Replace these with your garments' real measurements.]</span></p>
+            <div class="unit-toggle" role="group" aria-label="Measurement units">
+                <button type="button" data-unit="cm" class="active">CM</button>
+                <button type="button" data-unit="in">IN</button>
+            </div>
 
-            <h2>Trousers (cm)</h2>
+            <h2>Adult Tee</h2>
+            <p class="table-hint">Garment measured flat · values in <span class="unit-name">cm</span></p>
             <table class="size-table">
                 <thead>
-                    <tr><th>Size</th><th>Waist</th><th>Hip</th><th>Inseam</th></tr>
+                    <tr><th>Size</th><th>Width</th><th>Length</th><th>Sleeve</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>XS</td><td>72</td><td>92</td><td>74</td></tr>
-                    <tr><td>S</td><td>76</td><td>96</td><td>75</td></tr>
-                    <tr><td>M</td><td>80</td><td>100</td><td>76</td></tr>
-                    <tr><td>L</td><td>84</td><td>104</td><td>77</td></tr>
-                    <tr><td>XL</td><td>88</td><td>108</td><td>78</td></tr>
+                    <tr><td>XS</td><td class="measure" data-cm="46">46</td><td class="measure" data-cm="66">66</td><td class="measure" data-cm="19">19</td></tr>
+                    <tr><td>S</td><td class="measure" data-cm="49">49</td><td class="measure" data-cm="69">69</td><td class="measure" data-cm="20">20</td></tr>
+                    <tr><td>M</td><td class="measure" data-cm="52">52</td><td class="measure" data-cm="72">72</td><td class="measure" data-cm="21">21</td></tr>
+                    <tr><td>L</td><td class="measure" data-cm="55">55</td><td class="measure" data-cm="74">74</td><td class="measure" data-cm="22">22</td></tr>
+                    <tr><td>XL</td><td class="measure" data-cm="58">58</td><td class="measure" data-cm="76">76</td><td class="measure" data-cm="23">23</td></tr>
+                    <tr><td>XXL</td><td class="measure" data-cm="61">61</td><td class="measure" data-cm="78">78</td><td class="measure" data-cm="24">24</td></tr>
                 </tbody>
             </table>
-            <p><span class="fill">[Replace these with your garments' real measurements.]</span></p>
+
+            <h2>Kids Tee</h2>
+            <p class="table-hint">By age · garment measured flat · values in <span class="unit-name">cm</span></p>
+            <table class="size-table">
+                <thead>
+                    <tr><th>Age</th><th>Width</th><th>Length</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>3–4</td><td class="measure" data-cm="33">33</td><td class="measure" data-cm="42">42</td></tr>
+                    <tr><td>5–6</td><td class="measure" data-cm="35">35</td><td class="measure" data-cm="46">46</td></tr>
+                    <tr><td>7–8</td><td class="measure" data-cm="37">37</td><td class="measure" data-cm="50">50</td></tr>
+                    <tr><td>9–10</td><td class="measure" data-cm="39">39</td><td class="measure" data-cm="54">54</td></tr>
+                    <tr><td>11–12</td><td class="measure" data-cm="41">41</td><td class="measure" data-cm="58">58</td></tr>
+                </tbody>
+            </table>
+            <p><span class="fill">[Example measurements — replace with your tees' real numbers.]</span></p>
 
             <h2>How to Measure</h2>
             <ul>
-                <li><strong>Chest:</strong> around the fullest part, under the arms.</li>
-                <li><strong>Waist:</strong> around your natural waistline.</li>
-                <li><strong>Hip:</strong> around the fullest part of your hips.</li>
-                <li><strong>Inseam:</strong> from the crotch seam to the bottom of the leg.</li>
+                <li><strong>Width:</strong> lay the tee flat and measure across the chest, seam to seam.</li>
+                <li><strong>Length:</strong> from the highest point of the shoulder straight down to the hem.</li>
+                <li><strong>Sleeve:</strong> from the shoulder seam to the end of the sleeve.</li>
             </ul>
             <p>
-                Measure a garment you already own and love, then compare it to the tables above for
-                the closest match.
+                Easiest check: measure a t-shirt you already own and love, then compare it to the
+                table above for the closest match.
             </p>
 
             <h2>Still Unsure?</h2>
@@ -139,6 +145,29 @@
             <p>© 2026 Le Kova. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+      // cm / inch toggle for the size tables
+      (function () {
+        const cells = document.querySelectorAll('.size-table .measure');
+        const btns = document.querySelectorAll('.unit-toggle button');
+        const labels = document.querySelectorAll('.unit-name');
+        function render(unit) {
+          cells.forEach(function (c) {
+            const cm = parseFloat(c.dataset.cm);
+            c.textContent = unit === 'cm' ? cm : (Math.round(cm / 2.54 * 2) / 2);
+          });
+          btns.forEach(function (b) {
+            b.classList.toggle('active', b.dataset.unit === unit);
+          });
+          labels.forEach(function (l) { l.textContent = unit === 'cm' ? 'cm' : 'inches'; });
+        }
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () { render(b.dataset.unit); });
+        });
+        render('cm');
+      })();
+    </script>
 
     <script src="/script.js"></script>
 </body>
