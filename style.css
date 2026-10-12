@@ -186,6 +186,27 @@ body {
     text-transform: uppercase;
 }
 
+/* Hero descriptive H1 (SEO) under the LE KOVA wordmark */
+.hero-h1 {
+    font-family: 'Playfair Display SC', serif;
+    font-size: clamp(0.85rem, 2.2vw, 1.15rem);
+    letter-spacing: 0.22em;
+    color: var(--silver-mid);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5;
+    max-width: 90vw;
+}
+
+/* Hero call-to-action row */
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.8rem;
+}
+
 /* ─── Buttons ─── */
 .btn-primary {
     margin-top: 0.8rem;
@@ -289,7 +310,10 @@ body {
 }
 
 .product-card {
-    cursor: default;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Real product photos */
@@ -952,4 +976,81 @@ body.subpage .nav {
     }
     .cookie-actions { width: 100%; }
     .cookie-btn { flex: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRODUCT PAGES
+   ═══════════════════════════════════════════════════════════ */
+.product-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    margin-bottom: 2rem;
+}
+
+.product-page-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--glass-border);
+    background: #fff;
+}
+
+.product-page-details .page-eyebrow {
+    margin-bottom: 0.8rem;
+}
+
+.product-page-details .page-title {
+    text-align: left;
+    margin-bottom: 1.4rem;
+}
+
+.product-page-details .lead {
+    margin-bottom: 1.4rem;
+}
+
+.product-specs {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+}
+.product-specs li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+.product-specs li strong {
+    color: var(--silver-light);
+    font-weight: 600;
+    margin-right: 0.4rem;
+}
+
+.product-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.product-meta-note {
+    font-size: 0.78rem;
+    color: var(--silver-dark);
+    letter-spacing: 0.04em;
+}
+.product-meta-note a {
+    color: var(--silver-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .product-page-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .product-page-details .page-title { text-align: center; }
+    .product-cta { justify-content: center; }
 }
